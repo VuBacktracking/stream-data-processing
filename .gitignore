@@ -1,0 +1,9 @@
+.venv/
+data/
+.env
+jars/
+*.log
+*/logs/
+**/.DS_Store
+**/__pycache__/
+asset/
