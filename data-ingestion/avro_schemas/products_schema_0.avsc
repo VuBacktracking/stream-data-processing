@@ -1,0 +1,48 @@
+{
+    "doc": "Schema for avro.",
+    "name": "Products",
+    "namespace": "products.avro",
+    "type": "record",
+    "fields": [
+        {
+            "name": "product_id",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "price",
+            "type": "float"
+        },
+        {
+            "name": "fulfillment_type",
+            "type": "string"
+        },
+        {
+            "name": "brand",
+            "type": "string"
+        },
+        {
+            "name": "review_count",
+            "type": "int"
+        },
+        {
+            "name": "rating_average",
+            "type": "float"
+        },
+        {
+            "name": "current_seller",
+            "type": "string"
+        },
+        {
+            "name": "category",
+            "type": "string"
+        },
+        {
+            "name": "quantity_sold",
+            "type": "int"
+        }
+    ]
+}
