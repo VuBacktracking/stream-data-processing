@@ -1,0 +1,14 @@
+{
+    "name": "products-cdc",
+    "config": {
+      "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+      "database.hostname": "postgresql",
+      "database.port": "5432",
+      "database.user": "v9",
+      "database.password": "v9",
+      "database.dbname": "v9",
+      "plugin.name": "pgoutput",
+      "database.server.name": "sales",
+      "table.include.list": "public.products"
+    }
+}
