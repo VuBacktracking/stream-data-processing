@@ -56,7 +56,7 @@ def insert_table(data_file, table_name, num_rows):
             logging.info("Query executed successfully.")
         except Exception as e:
             logging.error(f"Failed to execute query with error: {e}")
-        sleep(2)
+        sleep(3)
 
 if __name__ == "__main__":
     insert_table(DATA_FILE, TABLE_NAME, NUM_ROWS)
