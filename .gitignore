@@ -2,7 +2,7 @@
 data/
 .env
 jars/
-*.log
+# *.log
 */logs/
 **/.DS_Store
 **/__pycache__/
