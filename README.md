@@ -88,7 +88,7 @@ bash run-cdc.sh register_connector conf/products-cdc-config.json
 You should see the connection is running like the image below in the port http://localhost:8085.
 
 <p align = "center">
-    <img src="assets/debezium-connect.png" alt="workflow" width = 80%>
+    <img src="assets/debezium-connect.png" width = 80%>
 </p>
 
 - **Step 2. Create table and insert data into Database**
@@ -99,6 +99,7 @@ python3 database-operations/insert_table.py
 ```
 
 In the PostgreSQL connection, you should see the database `v9` and the table `products` like the image below.
+
 <p align = "center">
-    <img src="assets/postgres-dbeaver.png" alt="workflow" width = 80%>
+    <img src="assets/postgres.png" width = 80%>
 </p>
