@@ -72,9 +72,9 @@ Create `.env` file and paste your MINIO keys, SPARK_HOME in it.
 4. **Services**
 
 * Postgres is accessible on the default port 5432.
-* Debezium UI: http://localhost:8080.
+* Debezium UI: http://localhost:8085.
 * Kafka Control Center: http://localhost:9021.
-* Trino: http://localhost:8085.
+* Trino: http://localhost:8084.
 * MinIO: http://localhost:9001.
 
 ## How to use?
