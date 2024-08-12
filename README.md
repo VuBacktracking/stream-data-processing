@@ -32,7 +32,7 @@ Before runing this script, ensure you have the following installed.\
 * Delta Lake
 * Debezium, Debezium UI
 
-## Setup environments
+## Start
 
 1. **Clone the repository**
 ```bash
@@ -71,7 +71,6 @@ Create `.env` file and paste your MINIO keys, SPARK_HOME in it.
 # Data
 - TABLE_NAME="products"
 - DATA_FILE='./data/products.csv'
-
 ```
 
 4. **Services**
@@ -84,4 +83,14 @@ Create `.env` file and paste your MINIO keys, SPARK_HOME in it.
 
 ## How to use?
 
+- **Step 1. Start Debezium Connection**
+```bash
+cd debezium
+bash run-cdc.sh register_connector conf/products-cdc-config.json
+```
 
+You should see the connection is running like the image below in the port http://localhost:8085.
+
+<p align = "center">
+    <img src="assets/debezium-connect.png" alt="workflow" width = 80%>
+</p>
