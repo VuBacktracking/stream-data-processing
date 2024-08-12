@@ -67,10 +67,6 @@ Create `.env` file and paste your MINIO keys, SPARK_HOME in it.
 
 # Spark
 - SPARK_HOME=""
-
-# Data
-- TABLE_NAME="products"
-- DATA_FILE='./data/products.csv'
 ```
 
 4. **Services**
@@ -93,4 +89,16 @@ You should see the connection is running like the image below in the port http:/
 
 <p align = "center">
     <img src="assets/debezium-connect.png" alt="workflow" width = 80%>
+</p>
+
+- **Step 2. Create table and insert data into Database**
+
+```bash
+python3 database-operations/create_table.py
+python3 database-operations/insert_table.py
+```
+
+In the PostgreSQL connection, you should see the database `v9` and the table `products` like the image below.
+<p align = "center">
+    <img src="assets/postgres-dbeaver.png" alt="workflow" width = 80%>
 </p>
