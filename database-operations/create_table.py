@@ -5,7 +5,7 @@ from postgresql_client import PostgresSQLClient
 
 # Configure logging
 logging.basicConfig(
-    filename='log/create_table.log',
+    filename='logs/create_table.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
 )
@@ -26,7 +26,6 @@ def create_products_table():
         CREATE TABLE products (
             id                  VARCHAR(50),           
             name                VARCHAR(255),
-            description         TEXT,
             original_price      NUMERIC(10, 2),
             price               NUMERIC(10, 2),
             fulfillment_type    VARCHAR(50),
@@ -36,7 +35,6 @@ def create_products_table():
             favourite_count     INTEGER,
             current_seller      VARCHAR(255),
             number_of_images    INTEGER,
-            has_video           BOOLEAN,
             category            VARCHAR(100),
             quantity_sold       INTEGER,
             discount            NUMERIC(5, 2) 

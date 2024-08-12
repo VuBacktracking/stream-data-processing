@@ -7,7 +7,7 @@ from postgresql_client import PostgresSQLClient
 
 # Configure logging
 logging.basicConfig(
-    filename='insert_db.log',
+    filename='logs/insert_and_stream.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
@@ -56,7 +56,7 @@ def insert_table(data_file, table_name, num_rows):
             logging.info("Query executed successfully.")
         except Exception as e:
             logging.error(f"Failed to execute query with error: {e}")
-        sleep(3)
+        sleep(4)
 
 if __name__ == "__main__":
     insert_table(DATA_FILE, TABLE_NAME, NUM_ROWS)
