@@ -116,18 +116,24 @@ def create_final_dataframe(df, spark_session):
     from pyspark.sql.types import IntegerType, FloatType, StringType, StructType, StructField, DecimalType
     from pyspark.sql.functions import col, from_json, udf
 
+    # Define the schema based on the transformed data
     payload_after_schema = StructType([
-            StructField("id", StringType(), True),
-            StructField("name", StringType(), True),
-            StructField("price", StringType(), True),
-            StructField("fulfillment_type", StringType(), True),
-            StructField("brand", StringType(), True),
-            StructField("review_count", IntegerType(), True),
-            StructField("rating_average", StringType(), True),
-            StructField("current_seller", StringType(), True),
-            StructField("category", StringType(), True),
-            StructField("quantity_sold", IntegerType(), True)
-])
+        StructField("id", StringType(), True),
+        StructField("name", StringType(), True),
+        StructField("description", StringType(), True),
+        StructField("original_price", StringType(), True),
+        StructField("price", StringType(), True),
+        StructField("fulfillment_type", StringType(), True),
+        StructField("brand", StringType(), True),
+        StructField("review_count", IntegerType(), True),
+        StructField("rating_average", StringType(), True),
+        StructField("favourite_count", IntegerType(), True),
+        StructField("current_seller", StringType(), True),
+        StructField("number_of_images", IntegerType(), True),
+        StructField("category", StringType(), True),
+        StructField("quantity_sold", IntegerType(), True),
+        StructField("discount", StringType(), True)
+    ])
 
     schema = StructType([
         StructField("payload", StructType([
@@ -138,12 +144,14 @@ def create_final_dataframe(df, spark_session):
     parsed_df = df.selectExpr("CAST(value AS STRING) as json") \
                 .select(from_json(col("json"), schema).alias("data")) \
                 .select("data.payload.after.*")
-
+                
     decode_base64_to_decimal_udf = udf(decode_base64_to_decimal, DecimalType(12, 2))
 
     decoded_df = parsed_df \
-            .withColumn("price", decode_base64_to_decimal_udf(col("price"))) \
-            .withColumn("rating_average", decode_base64_to_decimal_udf(col("rating_average"))) \
+        .withColumn("price", decode_base64_to_decimal_udf(col("price"))) \
+        .withColumn("original_price", decode_base64_to_decimal_udf(col("original_price"))) \
+        .withColumn("rating_average", decode_base64_to_decimal_udf(col("rating_average"))) \
+        .withColumn("discount", decode_base64_to_decimal_udf(col("discount"))) \
 
     decoded_df.createOrReplaceTempView("products_view")
 
@@ -155,7 +163,6 @@ def create_final_dataframe(df, spark_session):
 
     logging.info("Final dataframe created successfully!")
     return df_final
-
 
 def start_streaming(df):
     minio_bucket = 'datalake'
