@@ -1,4 +1,4 @@
-# DATA STREAM PROCESSING
+# DATA STREAM PROCESSING 
 
 ## Overview
 
@@ -103,3 +103,30 @@ In the PostgreSQL connection, you should see the database `v9` and the table `pr
 <p align = "center">
     <img src="assets/postgres.png" width = 80%>
 </p>
+
+- **Step 3. Start Streaming Data to MinIO**
+```bash
+python3 stream_processing/delta-to-minio.py
+```
+
+After putting data to MinIO storage, you can go to the port http://localhost:9001 and see the result like this image
+
+<p align = "center">
+    <img src="assets/minio.png" width = 80%>
+</p>
+
+## Read streaming data with Trino and Dbeaver
+
+### Connect Trino in Dbeaver
+
+<p align = "center">
+    <img src="assets/trino_connect.png" width = 80%>
+</p>
+
+### Query with Dbeaver
+
+Create your Trino schema and table in Dbeaver
+
+```sql
+
+```
