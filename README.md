@@ -128,5 +128,31 @@ After putting data to MinIO storage, you can go to the port http://localhost:900
 Create your Trino schema and table in Dbeaver
 
 ```sql
+-- Create the schema if it doesn't exist
+CREATE SCHEMA IF NOT EXISTS lakehouse.products
+WITH (location = 's3://datalake/');
 
+-- Create the products table
+CREATE TABLE IF NOT EXISTS lakehouse.products.products (
+    id VARCHAR,
+    name VARCHAR,
+    original_price DOUBLE,
+    price DOUBLE,
+    fulfillment_type VARCHAR,
+    brand VARCHAR,
+    review_count INTEGER,
+    rating_average DOUBLE,
+    favourite_count INTEGER,
+    current_seller VARCHAR,
+    number_of_images INTEGER,
+    category VARCHAR,
+    quantity_sold INTEGER,
+    discount DOUBLE
+) WITH (
+    location = 's3://datalake/products/'
+);
 ```
+
+<p align = "center">
+    <img src="assets/trino_dbeaver.png" width = 80%>
+</p>
