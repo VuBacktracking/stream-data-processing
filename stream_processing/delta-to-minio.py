@@ -120,7 +120,6 @@ def create_final_dataframe(df, spark_session):
     payload_after_schema = StructType([
         StructField("id", StringType(), True),
         StructField("name", StringType(), True),
-        StructField("description", StringType(), True),
         StructField("original_price", StringType(), True),
         StructField("price", StringType(), True),
         StructField("fulfillment_type", StringType(), True),
